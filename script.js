@@ -23,7 +23,11 @@ function resetGame() {
   guess.value = "";
   number.textContent = "?";
   number.style.width = "15rem";
-  message.textContent = "Start guessing...";
+  displayMessage("Start guessing...");
+}
+
+function displayMessage(mess) {
+  message.textContent = mess;
 }
 
 let answer = getRandomNumber();
@@ -33,10 +37,10 @@ btn_check.addEventListener("click", function () {
   let guessNum = guess.value;
 
   if (!guessNum) {
-    message.textContent = "No Number";
+    displayMessage("No Number");
   } else if (curScore > 1) {
     if (Number(guessNum) === answer) {
-      message.textContent = "Correct";
+      displayMessage("Correct");
       number.textContent = answer;
       curHighScore = curScore;
       bgcolor.backgroundColor = "#60b347";
@@ -45,12 +49,13 @@ btn_check.addEventListener("click", function () {
       if (curHighScore > highscore.textContent)
         highscore.textContent = curHighScore;
     } else {
-      message.textContent = answer < guessNum ? "Too High!" : "Too Low";
+      // message.textContent = answer < guessNum ? "Too High!" : "Too Low";
+      displayMessage(answer < guessNum ? "Too High!" : "Too Low");
       curScore -= 1;
       score.textContent = curScore;
     }
   } else {
-    message.textContent = "You Lost The Game";
+    displayMessage("You Lost The Game");
     curScore -= 1;
     score.textContent = curScore;
     number.textContent = answer;

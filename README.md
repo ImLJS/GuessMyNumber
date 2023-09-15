@@ -1,2 +1,2 @@
-# Dice Game
+# Guess My Number
  

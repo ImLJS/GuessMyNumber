@@ -23,7 +23,7 @@ function resetGame() {
   guess.value = "";
   number.textContent = "?";
   number.style.width = "15rem";
-  message.textContent = 'Start guessing...'
+  message.textContent = "Start guessing...";
 }
 
 let answer = getRandomNumber();
@@ -44,12 +44,8 @@ btn_check.addEventListener("click", function () {
 
       if (curHighScore > highscore.textContent)
         highscore.textContent = curHighScore;
-    } else if (guessNum > answer) {
-      message.textContent = "Too High!";
-      curScore -= 1;
-      score.textContent = curScore;
     } else {
-      message.textContent = "Too Low";
+      message.textContent = answer < guessNum ? "Too High!" : "Too Low";
       curScore -= 1;
       score.textContent = curScore;
     }
